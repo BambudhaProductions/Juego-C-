@@ -7,11 +7,13 @@ using namespace std;
 int numero,numeroU,numeroD,numeroC,numeroA;
 int numeroAU,numeroAD,numeroAC;
 int numeroIntentos = 0;
+int sw;
 bool victoria = false;
 void buscandoSimilitudes();
+int validarNumero(char numero[3]);
 
 int main(){
-    
+    	char numero[3];
 //generando numero aleatorio de 3 cifras
 	srand(time(NULL));
 	numeroA = 1 + rand ()%(1000);
@@ -28,26 +30,33 @@ do{
 	cout<<"Usted debera encontrar un numero de 3 cifras, si acierta la unidad, decena o centena del numero aleatorio se le marcara con un 'BIEN',de lo contrario se le marcara con un 'MAL'."<<endl;
 	cout<<"Recuerde que tendra una cantidad limitada de intentos [20], sino perdere el juego."<<endl;
         cout<<"\nDigite un numero entre el [1-999]: ";
-    	cin>>numero;
+    	gets(numero);
+    	
+    	sw = validarNumero(numero);
+    	
+    	if (sw==0){
+	// partiendo el numero del usuario en unidad, decena y centena
+		numeroC = numero%10, numero/=10;
+		numeroD = numero%10, numero/=10;
+		numeroU = numero%10, numero/=10;
+
+		buscandoSimilitudes();	
 		
-		
-// partiendo el numero del usuario en unidad, decena y centena
-	numeroC = numero%10, numero/=10;
-	numeroD = numero%10, numero/=10;
-	numeroU = numero%10, numero/=10;
-		
-		
-// condicional para ganar el juego							    
-   if((numeroAU==numeroU)&&(numeroAD==numeroD)&&(numeroAC==numeroC)){
-	cout<<"\n--[FELICIDADES USTED HA ENCONTRADO EL NUMERO]--"<<endl;
-	cout<<"\nEl numero de intentos ha sido de: "<<numeroIntentos<<endl;
-	victoria = true;
-	break;
+	// condicional para ganar el juego							    
+		if((numeroAU==numeroU)&&(numeroAD==numeroD)&&(numeroAC==numeroC)){
+		cout<<"\n--[FELICIDADES USTED HA ENCONTRADO EL NUMERO]--"<<endl;
+		cout<<"\nEl numero de intentos ha sido de: "<<numeroIntentos<<endl;
+		victoria = true;
+		break;
+		}
 	}
-		
-    buscandoSimilitudes();
-		    
-   }while(numeroIntentos<20);
+	else{// cuando digita un numero o caracter invalido
+		cout<<"\nComando Invalido\n"<<endl;
+		system("pause");
+		system("cls");
+	}
+   
+ }while(numeroIntentos<20);
     
       cout<<endl;
       cout<<"\t--[GAME OVER]--"<<endl;
@@ -95,6 +104,21 @@ if((numeroAU!=numeroU)&&(numeroAD!=numeroD)&&(numeroAC!=numeroC)){
 		    
 	system("pause");
 	system("cls");
+}
+
+int validarNumero(char numero[3]){
+	int i=0, sw=0, j;
+	j = strlen(numero); 
+	
+	while(i<j && sw==0){
+		if(isdigit(numero[i])!=0 && j==3){
+		    i++;
+		}
+		else{
+		    sw = 1;
+		}
+	}
+	return sw;		
 }
 
 
