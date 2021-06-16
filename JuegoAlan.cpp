@@ -36,9 +36,9 @@ do{
     	
     	if (sw==0){
 	// partiendo el numero del usuario en unidad, decena y centena
-		numeroC = numero%10, numero/=10;
-		numeroD = numero%10, numero/=10;
-		numeroU = numero%10, numero/=10;
+		numeroC = numero[2]%10, numero[2]/=10;
+		numeroD = numero[1]%10, numero[1]/=10;
+		numeroU = numero[0]%10, numero[0]/=10;
 
 		buscandoSimilitudes();	
 		
