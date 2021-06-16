@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stdlib.h>
+#include<string.h>
 #include<time.h>//se usa para generar un numero aleatorio.
 using namespace std;
 
