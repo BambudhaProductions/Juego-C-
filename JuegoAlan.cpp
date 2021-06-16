@@ -30,7 +30,7 @@ do{
 	cout<<"\t\t\t\t::[INSTRUCCIONES]::\n"<<endl;
 	cout<<"Usted debera encontrar un numero de 3 cifras, si acierta la unidad, decena o centena del numero aleatorio se le marcara con un 'BIEN',de lo contrario se le marcara con un 'MAL'."<<endl;
 	cout<<"Recuerde que tendra una cantidad limitada de intentos [20], sino perdere el juego."<<endl;
-        cout<<"\nDigite un numero entre el [1-999]: ";
+        cout<<"\nDigite un numero de 3 cifras: ";
     	gets(numero);
     	
     	sw = validarNumero(numero);
